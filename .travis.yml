@@ -1,0 +1,33 @@
+language: cpp
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install libnotmuch-dev libboost-all-dev libglibmm-2.4-dev libwebkit-dev libwebkitgtk-3.0 libwebkitgtk-3.0-dev libgtkmm-3.0-dev libgmime-2.6-dev
+
+script: 
+  - scons
+
+compiler:
+  - clang
+  - gcc
+
+notification:
+  recipients:
+    - eg@gaute.vetsj.com
+
+  email:
+    on_success: change
+    on_failure: always
+
+  irc:
+    channels:
+      - "chat.freenode.net#astroid"
+    template:
+      - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
+
+
+os:
+  - linux
+  - osx
+  - freebsd
+
