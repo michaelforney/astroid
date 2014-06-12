@@ -63,6 +63,9 @@ if not GetOption("verbose_flag"):
 
 # Verbose }}}
 
+import SCons
+import SCons.Util
+
 # set up compiler and linker from env variables
 if os.environ.has_key('CC'):
   env['CC'] = os.environ['CC']
