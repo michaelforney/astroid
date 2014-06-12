@@ -8,7 +8,7 @@ script:
   - scons --verbose
 
 compiler:
-  - gcc
+  - clang
 
 notification:
   recipients:
@@ -16,17 +16,5 @@ notification:
 
   email:
     on_success: change
-    on_failure: always
-
-  irc:
-    channels:
-      - "chat.freenode.net#astroid"
-    template:
-      - "%{repository}/%{branch} (%{commit} - %{author}): %{message}"
-
-
-os:
-  - linux
-  - osx
-  - freebsd
+    on_failure: change
 
