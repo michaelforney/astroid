@@ -5,6 +5,7 @@ before_install:
   - sudo apt-get -qq install libnotmuch-dev libboost-all-dev libglibmm-2.4-dev libwebkit-dev libwebkitgtk-3.0 libwebkitgtk-3.0-dev libgtkmm-3.0-dev libgmime-2.6-dev
 
 install:
+  - export cwd=$(pwd)
   # clang 3.4
   - if [ "$CXX" == "clang++" ]; then export CXXFLAGS="-std=c++0x -stdlib=libc++"; fi
   - if [ "$CXX" == "clang++" ]; then svn co --quiet http://llvm.org/svn/llvm-project/libcxx/trunk libcxx; fi
