@@ -3,6 +3,20 @@ language: cpp
 before_install:
   - sudo apt-get -qq install libnotmuch-dev libboost-all-dev libglibmm-2.4-dev libwebkit-dev libwebkitgtk-3.0 libwebkitgtk-3.0-dev libgtkmm-3.0-dev libgmime-2.6-dev
 
+install:
+  # clang 3.4
+  - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.4; fi
+  - if [ "$CXX" == "clang++" ]; then export CXXFLAGS="-std=c++0x -stdlib=libc++"; fi
+  - if [ "$CXX" == "clang++" ]; then svn co --quiet http://llvm.org/svn/llvm-project/libcxx/trunk libcxx; fi
+
+  - if [ "$CXX" == "clang++" ]; then cd libcxx/lib && bash buildit; fi
+  - if [ "$CXX" == "clang++" ]; then sudo cp ./libc++.so.1.0 /usr/lib/; fi
+  - if [ "$CXX" == "clang++" ]; then sudo mkdir /usr/include/c++/v1; fi
+  - if [ "$CXX" == "clang++" ]; then cd .. && sudo cp -r include/* /usr/include/c++/v1/; fi
+  - if [ "$CXX" == "clang++" ]; then cd /usr/lib && sudo ln -sf libc++.so.1.0 libc++.so; fi
+  - if [ "$CXX" == "clang++" ]; then sudo ln -sf libc++.so.1.0 libc++.so.1 && cd $cwd; fi
+
+
 script: 
   - scons --verbose
 
