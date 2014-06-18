@@ -8,7 +8,7 @@ before_install:
   - sudo add-apt-repository ppa:boost-latest/ppa --yes
   # use newer gnome
   - sudo add-apt-repository ppa:ricotz/testing --yes
-  - sudo add-apt-repository ppa:gnome3-team/gnome3-staging --yes
+  - sudo add-apt-repository ppa:gnome3-team/gnome3 --yes
 
   # update new repos
   - sudo apt-get update -qq
