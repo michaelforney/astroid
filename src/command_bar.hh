@@ -12,6 +12,7 @@
 
 # include <gtkmm.h>
 # include <gtkmm/searchbar.h>
+# include <gtkmm/searchentry.h>
 
 # include <functional>
 
