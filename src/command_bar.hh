@@ -11,6 +11,7 @@
 # pragma once
 
 # include <gtkmm.h>
+# include <gtkmm/searchbar.h>
 
 # include <functional>
 

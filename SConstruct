@@ -113,6 +113,7 @@ source = (
           )
 
 conf = Configure(env)
+# TODO: clang does not seem to be able to find this one
 if not conf.CheckFunc ('gtk_socket_focus_forward'):
   print "gtk_socket_focus_forward is missing, please see: https://bugzilla.gnome.org/show_bug.cgi?id=729248"
 else:
